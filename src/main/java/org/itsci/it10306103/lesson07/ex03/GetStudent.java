@@ -21,13 +21,32 @@ public class GetStudent {
 
         try {
             session.beginTransaction();
-            Student dbStudent1 = session.get(Student.class, 1);
+            Student dbStudent1;
+            Student dbStudent2;
+            // Get
+            dbStudent1 = session.get(Student.class, 1);
             System.out.println("Valid Student get called");
             System.out.println(dbStudent1);
 
-            Student dbStudent2 = (Student) session.get(Student.class, 2);
+            dbStudent2 = session.get(Student.class, 2);
             System.out.println("Invalid Student get called");
             System.out.println(dbStudent2);
+
+            // Try to load object that does not exist from database
+            dbStudent2 = session.get(Student.class, 20);
+            System.out.println("Invalid Student get called");
+            System.out.println(dbStudent2);
+
+            // Load
+            dbStudent1 = session.load(Student.class, 1);
+            System.out.println("Valid Student get called");
+            System.out.println(dbStudent1);
+
+            // Try to load object that does not exist from memory
+            dbStudent2 = session.load(Student.class, 20);
+            System.out.println("Invalid Student get called");
+            System.out.println(dbStudent2);
+
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
