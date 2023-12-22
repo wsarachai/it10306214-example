@@ -2,22 +2,13 @@ package org.itsci.it10306103.lesson08.ex01;
 
 import java.util.List;
 
-import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.query.Query;
 
-public class HibernateList {
+public class HibernateListApp2 {
   public static void main(String[] args) {
-    final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-        .configure()
-        .build();
-    SessionFactory sessionFactory = new MetadataSources(registry)
-        .buildMetadata()
-        .buildSessionFactory();
-
+    SessionFactory sessionFactory = HibernateConnection.getSessionFactory();
     Session session = sessionFactory.openSession();
 
     Query<Student> query = session.createQuery("from Student", Student.class);

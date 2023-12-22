@@ -6,7 +6,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-public class GetStudent {
+public class GetStudentApp {
     public static void main(String[] args) {
         // Read hibernate.cfg.xml file
         final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()

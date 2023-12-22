@@ -3,7 +3,7 @@ package org.itsci.it10306103.lesson08.ex03;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-public class Run03 {
+public class TestApp {
     public static void main(String[] args) {
         SessionFactory sessionFactory = HibernateConnection.getSessionFactory();
         Session session = sessionFactory.openSession();
