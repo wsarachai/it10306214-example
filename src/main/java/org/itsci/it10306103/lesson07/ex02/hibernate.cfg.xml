@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <!-- Database connection settings -->
+    <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/it214_db</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">1234</property>
+
+    <!-- Echo all executed SQL to stdout -->
+    <property name="hibernate.show_sql">true</property>
+
+    <!-- JDBC connection pool (use the built-in) -->
+    <property name="connection.pool_size">1</property>
+
+    <!-- Drop and re-create the database schema on startup -->
+    <property name="hibernate.hbm2ddl.auto">update</property>
+
+    <property name="hibernate.connection.autocommit">true</property>
+
+    <!-- Mention
+    here all the model classes along with their package name -->
+    <mapping resource="org/itsci/it10306103/lesson07/ex02/Student.hbm.xml"/>
+    <!-- <mapping class="org.itsci.it10306103.lesson07.ex01.Student" /> -->
+
+  </session-factory>
+</hibernate-configuration>

@@ -1,6 +1,16 @@
-package org.itsci.it10306103.lesson07.ex01;
+package org.itsci.it10306103.lesson08.ex01;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "students")
 public class Student {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
   private String name;
   private int age;

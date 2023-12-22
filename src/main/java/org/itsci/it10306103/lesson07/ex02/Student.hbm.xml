@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="it214.hbm">
+
+    <class name="org.itsci.it10306103.lesson07.ex02.Student" table="students">
+        <id name="id" column="id">
+            <generator class="increment"/>
+        </id>
+        <property name="name"/>
+        <property name="age"/>
+    </class>
+
+</hibernate-mapping>
