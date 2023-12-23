@@ -1,4 +1,4 @@
-package org.itsci.it10306103.lesson09.ex01;
+package org.itsci.it10306103.lesson09.ex02;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,17 +1,15 @@
-package org.itsci.it10306103.lesson09.ex01;
+package org.itsci.it10306103.lesson09.ex04;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Collection;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,16 +17,13 @@ import javax.persistence.Table;
 public class Student {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  // @Column(name = "student_id")
   private int id;
   private String name;
   private int age;
   private String major;
-  @ManyToMany(cascade = { CascadeType.ALL })
-  // @JoinTable(name = "students_courses", joinColumns = { @JoinColumn(name =
-  // "student_id") }, inverseJoinColumns = {
-  // @JoinColumn(name = "course_id") })
-  private Set<Course> courses = new HashSet<Course>();
+  @ElementCollection
+  @CollectionTable(name = "certifications", joinColumns = @JoinColumn(name = "student_id"))
+  private Collection<Certification> certificates = new ArrayList<Certification>();
 
   public Student() {
   }
@@ -63,20 +58,20 @@ public class Student {
     this.age = age;
   }
 
-  public Set<Course> getCourses() {
-    return courses;
-  }
-
-  public void setCourses(Set<Course> courses) {
-    this.courses = courses;
-  }
-
   public String getMajor() {
     return major;
   }
 
   public void setMajor(String major) {
     this.major = major;
+  }
+
+  public Collection<Certification> getCertificates() {
+    return certificates;
+  }
+
+  public void setCertificates(Collection<Certification> certificates) {
+    this.certificates = certificates;
   }
 
 }
