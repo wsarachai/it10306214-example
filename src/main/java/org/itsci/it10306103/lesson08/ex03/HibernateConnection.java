@@ -7,7 +7,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 public class HibernateConnection {
-  static String url = "jdbc:mysql://localhost:3306/it214_db";
+  static String url = "jdbc:mysql://localhost:3306/it214db";
   static String uname = "root";
   static String pwd = "1234";
 

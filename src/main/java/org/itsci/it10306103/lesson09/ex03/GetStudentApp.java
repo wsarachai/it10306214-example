@@ -1,7 +1,5 @@
 package org.itsci.it10306103.lesson09.ex03;
 
-import java.util.Set;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 

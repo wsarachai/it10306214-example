@@ -1,13 +1,10 @@
 package org.itsci.it10306103.lesson07.ex02;
 
-import java.io.File;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
 
 public class HibernateApp {
   public static void main(String[] args) {

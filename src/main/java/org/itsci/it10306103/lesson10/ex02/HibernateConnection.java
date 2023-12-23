@@ -1,4 +1,4 @@
-package org.itsci.it10306103.lesson08.ex04;
+package org.itsci.it10306103.lesson10.ex02;
 
 import java.util.Properties;
 
@@ -24,8 +24,7 @@ public class HibernateConnection {
     database.setProperty("hibernate.hbm2ddl.auto", "update");
     Configuration cfg = new Configuration().setProperties(database)
         .addPackage("bean")
-        .addAnnotatedClass(Company.class)
-        .addAnnotatedClass(Employee.class);
+        .addAnnotatedClass(Student.class);
     StandardServiceRegistryBuilder ssrb = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties());
     sessionFactory = cfg.buildSessionFactory(ssrb.build());
 

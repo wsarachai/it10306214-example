@@ -1,4 +1,4 @@
-package org.itsci.it10306103.lesson07.ex01;
+package org.itsci.it10306103.lesson10.ex01;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -24,11 +24,15 @@ public class MySQLApp {
       int id = rs.getInt("id");
       String name = rs.getString("name");
       int age = rs.getInt("age");
+      String major = rs.getString("major");
+      double gpa = rs.getDouble("gpa");
 
       // Display values
-      System.out.println("ID: " + id);
-      System.out.println("Name: " + name);
-      System.out.println("Age: " + age);
+      System.out.print("ID: " + id);
+      System.out.print(", Name: " + name);
+      System.out.print(", Age: " + age);
+      System.out.print(", Major: " + major);
+      System.out.println(", GPA: " + gpa);
     }
 
     // STEP 5: Clean-up environment
