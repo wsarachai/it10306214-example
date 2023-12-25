@@ -20,7 +20,8 @@ public class HibernateConnection {
     database.setProperty("hibernate.connection.username", uname);
     database.setProperty("hibernate.connection.password", pwd);
     database.setProperty("hibernate.connection.url", url);
-    database.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+    database.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
+    database.setProperty("hibernate.dialect.storage_engine", "innodb");
     database.setProperty("hibernate.hbm2ddl.auto", "update");
     Configuration cfg = new Configuration().setProperties(database)
         .addPackage("bean")
