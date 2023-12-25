@@ -1,6 +1,7 @@
 package org.itsci.it10306103.lesson09.ex08;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,7 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(schema = "registrations")
+@Table(name = "registrations")
 public class Registration {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +19,7 @@ public class Registration {
   private Student student;
   @ManyToOne(cascade = CascadeType.ALL)
   private Course course;
+  @Column(name = "grade", length = 2)
   private String grade;
 
   public Registration() {

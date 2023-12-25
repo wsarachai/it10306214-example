@@ -1,13 +1,9 @@
-package org.itsci.it10306103.lesson09.ex08;
-
-import java.util.HashSet;
-import java.util.Set;
+package org.itsci.it10306103.lesson10.ex02;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,8 +14,6 @@ public class Course {
   private int id;
   private String name;
   private int credit;
-  @OneToMany(mappedBy = "course")
-  private Set<Registration> registrations = new HashSet<Registration>();
 
   public Course() {
   }
@@ -53,12 +47,9 @@ public class Course {
     this.credit = credit;
   }
 
-  public Set<Registration> getRegistrations() {
-    return registrations;
-  }
-
-  public void setRegistrations(Set<Registration> registrations) {
-    this.registrations = registrations;
+  @Override
+  public String toString() {
+    return "Course [id=" + id + ", name=" + name + ", credit=" + credit + "]";
   }
 
 }
