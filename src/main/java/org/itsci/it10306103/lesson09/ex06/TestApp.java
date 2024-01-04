@@ -2,6 +2,7 @@ package org.itsci.it10306103.lesson09.ex06;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.itsci.it10306103.DateUtils;
 
 public class TestApp {
 
