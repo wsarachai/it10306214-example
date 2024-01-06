@@ -19,6 +19,40 @@ public class TestApp {
       session.save(student2);
       session.save(student3);
       session.save(student4);
+
+      Supplier supplier1 = new Supplier("Procor & Gamble", "USA");
+      Supplier supplier2 = new Supplier("Unilever", "UK");
+      Product product1 = new Product("Dove", "Shampoo", 112.0);
+      Product product2 = new Product("Head & Shoulders", "Shampoo", 99.0);
+      Product product3 = new Product("Pantene", "Shampoo", 120.0);
+      Product product4 = new Product("Sunsilk", "Shampoo", 80.0);
+      Product product5 = new Product("Lux", "Soap", 25.0);
+      Product product6 = new Product("Lifebuoy", "Soap", 20.0);
+      Product product7 = new Product("Dettol", "Soap", 30.0);
+      Product product8 = new Product("Safeguard", "Soap", 35.0);
+      Product product10 = new Product("Tide", "laundry detergent", 45.0);
+      Product product11 = new Product("Ariel", "laundry detergent", 50.0);
+      Product product12 = new Product("Downy", "fabric softener", 60.0);
+      Product product13 = new Product("Bounce", "fabric softener", 55.0);
+      Product product14 = new Product("Febreze", "fabric freshener", 70.0);
+
+      supplier1.getProducts().add(product1);
+      supplier1.getProducts().add(product2);
+      supplier1.getProducts().add(product3);
+      supplier1.getProducts().add(product4);
+      supplier1.getProducts().add(product5);
+      supplier1.getProducts().add(product6);
+      supplier1.getProducts().add(product7);
+      supplier2.getProducts().add(product8);
+      supplier2.getProducts().add(product10);
+      supplier2.getProducts().add(product11);
+      supplier2.getProducts().add(product12);
+      supplier2.getProducts().add(product13);
+      supplier2.getProducts().add(product14);
+
+      session.save(supplier1);
+      session.save(supplier2);
+
       session.getTransaction().commit();
     } finally {
       if (session.getTransaction().isActive()) {

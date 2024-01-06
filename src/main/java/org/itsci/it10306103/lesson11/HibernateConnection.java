@@ -25,7 +25,9 @@ public class HibernateConnection {
     database.setProperty("hibernate.hbm2ddl.auto", "update");
     Configuration cfg = new Configuration().setProperties(database)
         .addPackage("bean")
-        .addAnnotatedClass(Student.class);
+        .addAnnotatedClass(Student.class)
+        .addAnnotatedClass(Product.class)
+        .addAnnotatedClass(Supplier.class);
     StandardServiceRegistryBuilder ssrb = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties());
     sessionFactory = cfg.buildSessionFactory(ssrb.build());
 

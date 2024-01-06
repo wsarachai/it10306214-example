@@ -2,12 +2,10 @@ package org.itsci.it10306103.lesson11.ex04;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.itsci.it10306103.DateUtils;
 import org.itsci.it10306103.lesson11.HibernateConnection;
 import org.itsci.it10306103.lesson11.Student;
 
