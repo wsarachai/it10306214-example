@@ -27,7 +27,9 @@ public class HibernateConnection {
         .addPackage("bean")
         .addAnnotatedClass(Student.class)
         .addAnnotatedClass(Product.class)
-        .addAnnotatedClass(Supplier.class);
+        .addAnnotatedClass(Supplier.class)
+        .addAnnotatedClass(Doctor.class)
+        .addAnnotatedClass(Patient.class);
     StandardServiceRegistryBuilder ssrb = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties());
     sessionFactory = cfg.buildSessionFactory(ssrb.build());
 

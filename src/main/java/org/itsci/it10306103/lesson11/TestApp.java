@@ -53,6 +53,28 @@ public class TestApp {
       session.save(supplier1);
       session.save(supplier2);
 
+      Doctor doctor1 = new Doctor("Dr. Sombat Jaidee", "General Practitioner");
+      Doctor doctor2 = new Doctor("Dr. Somchai Jaipak", "Allergist");
+      Doctor doctor3 = new Doctor("Dr. Somrak Jaijing", "Surgery");
+      Patient patient1 = new Patient("Somsri Jaipak", "Stomachache");
+      Patient patient2 = new Patient("Sompong Jaimon", "Headache");
+      Patient patient3 = new Patient("Somchai Jaidee", "Heart attack");
+      Patient patient4 = new Patient("Somrak Jaijing", "Broken leg");
+
+      doctor1.getPatients().add(patient1);
+      doctor1.getPatients().add(patient2);
+      patient1.setDoctor(doctor1);
+      patient2.setDoctor(doctor1);
+
+      doctor2.getPatients().add(patient3);
+      doctor2.getPatients().add(patient4);
+      patient3.setDoctor(doctor2);
+      patient4.setDoctor(doctor2);
+
+      session.save(doctor1);
+      session.save(doctor2);
+      session.save(doctor3);
+
       session.getTransaction().commit();
     } finally {
       if (session.getTransaction().isActive()) {
