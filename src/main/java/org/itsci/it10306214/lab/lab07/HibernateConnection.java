@@ -2,8 +2,6 @@ package org.itsci.it10306214.lab.lab07;
 
 import java.util.Properties;
 
-import javax.persistence.criteria.CriteriaBuilder.In;
-
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
