@@ -13,12 +13,11 @@ public class TestApp {
 
     try {
       session.beginTransaction();
-      String hql = "FROM Invoice";
-      Query<Invoice> query = session.createQuery(hql, Invoice.class);
-      List<Invoice> invoices = query.getResultList();
-      for (Invoice invoice : invoices) {
-        System.out.println(invoice.getVendor());
-        System.out.println(invoice.getTerm());
+      String hql = "FROM Vendor";
+      Query<Vendor> query = session.createQuery(hql, Vendor.class);
+      List<Vendor> generalLedgerAccounts = query.getResultList();
+      for (Vendor vendor : generalLedgerAccounts) {
+        System.out.println(vendor.getDefaultAccount());
         System.out.println("--------------------");
       }
       session.getTransaction().commit();
