@@ -2,7 +2,7 @@
 *.class
 ._pom.xml
 target/
-*.DS_Store
+.DS_Store
 
 # Log file
 *.log
