@@ -30,8 +30,7 @@ public class HibernateConnection {
         .addAnnotatedClass(GeneralLedgerAccount.class)
         .addAnnotatedClass(Term.class)
         .addAnnotatedClass(VendorContact.class)
-        .addAnnotatedClass(Vendor.class)
-        .addAnnotatedClass(Invoice.class);
+        .addAnnotatedClass(Vendor.class);
     StandardServiceRegistryBuilder ssrb = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties());
     sessionFactory = cfg.buildSessionFactory(ssrb.build());
 
