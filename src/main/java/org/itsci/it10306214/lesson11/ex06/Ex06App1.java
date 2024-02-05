@@ -1,13 +1,13 @@
-package org.itsci.it10306103.lesson11.ex06;
+package org.itsci.it10306214.lesson11.ex06;
 
 import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
-import org.itsci.it10306103.lesson11.Doctor;
-import org.itsci.it10306103.lesson11.HibernateConnection;
-import org.itsci.it10306103.lesson11.Patient;;
+import org.itsci.it10306214.lesson11.Doctor;
+import org.itsci.it10306214.lesson11.HibernateConnection;
+import org.itsci.it10306214.lesson11.Patient;;
 
 public class Ex06App1 {
   public static void main(String[] args) {

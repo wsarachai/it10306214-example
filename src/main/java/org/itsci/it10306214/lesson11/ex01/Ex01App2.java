@@ -1,4 +1,4 @@
-package org.itsci.it10306103.lesson11.ex01;
+package org.itsci.it10306214.lesson11.ex01;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.itsci.it10306103.lesson11.HibernateConnection;
-import org.itsci.it10306103.lesson11.Student;
+import org.itsci.it10306214.lesson11.HibernateConnection;
+import org.itsci.it10306214.lesson11.Student;
 
 public class Ex01App2 {
     public static void main(String[] args) {

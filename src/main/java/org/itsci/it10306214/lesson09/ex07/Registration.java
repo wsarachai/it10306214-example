@@ -1,4 +1,4 @@
-package org.itsci.it10306103.lesson09.ex07;
+package org.itsci.it10306214.lesson09.ex07;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;

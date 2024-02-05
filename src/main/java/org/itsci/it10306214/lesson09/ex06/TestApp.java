@@ -1,8 +1,8 @@
-package org.itsci.it10306103.lesson09.ex06;
+package org.itsci.it10306214.lesson09.ex06;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.itsci.it10306103.DateUtils;
+import org.itsci.it10306214.DateUtils;
 
 public class TestApp {
 
