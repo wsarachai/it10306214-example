@@ -1,4 +1,4 @@
-package org.itsci.it10306103.lesson09.ex06;
+package org.itsci.it10306214.lesson09.ex06;
 
 import java.io.Serializable;
 import java.util.Date;

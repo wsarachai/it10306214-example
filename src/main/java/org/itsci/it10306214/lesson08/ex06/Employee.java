@@ -1,4 +1,4 @@
-package org.itsci.it10306103.lesson08.ex06;
+package org.itsci.it10306214.lesson08.ex06;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;

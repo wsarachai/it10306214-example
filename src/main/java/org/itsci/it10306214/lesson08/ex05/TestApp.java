@@ -1,4 +1,4 @@
-package org.itsci.it10306103.lesson08.ex05;
+package org.itsci.it10306214.lesson08.ex05;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

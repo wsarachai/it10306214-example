@@ -1,4 +1,4 @@
-package org.itsci.it10306103.lesson09.ex01;
+package org.itsci.it10306214.lesson09.ex01;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

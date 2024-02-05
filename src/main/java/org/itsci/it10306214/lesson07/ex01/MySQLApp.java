@@ -1,4 +1,4 @@
-package org.itsci.it10306103.lesson07.ex01;
+package org.itsci.it10306214.lesson07.ex01;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

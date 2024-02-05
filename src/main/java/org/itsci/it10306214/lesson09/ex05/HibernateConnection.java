@@ -1,4 +1,4 @@
-package org.itsci.it10306103.lesson09.ex05;
+package org.itsci.it10306214.lesson09.ex05;
 
 import java.util.Properties;
 
