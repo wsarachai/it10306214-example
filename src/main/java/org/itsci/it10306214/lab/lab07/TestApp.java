@@ -15,11 +15,36 @@ public class TestApp {
       session.beginTransaction();
       String hql = "FROM Vendor";
       Query<Vendor> query = session.createQuery(hql, Vendor.class);
-      List<Vendor> generalLedgerAccounts = query.getResultList();
-      for (Vendor vendor : generalLedgerAccounts) {
-        System.out.println(vendor.getDefaultAccount());
-        System.out.println("--------------------");
+      query.setFirstResult(0);
+      query.setMaxResults(10);
+
+      List<Vendor> vendors = query.getResultList();
+      System.out.println("                       --- List of Vendor ---");
+      System.out.println("--------------------------------------------------------------------------");
+      System.out.printf("%-10s| %-32s| %s\n", "Vendor ID", "Name", "Address");
+      System.out.println("--------------------------------------------------------------------------");
+      for (Vendor vendor : vendors) {
+        Integer vendorId = vendor.getVendorId();
+        String vendorName = vendor.getVendorContact() == null ? vendor.getVendorName()
+            : vendor.getVendorContact().getFirstName() + " " + vendor.getVendorContact().getLastName();
+        System.out.printf("    %-6d| %-31s | %s\n", vendorId,
+            vendorName,
+            vendor.getVendorAddress1());
+        GeneralLedgerAccount defaultAccount = vendor.getDefaultAccount();
+        if (defaultAccount != null) {
+          System.out.printf("    %-6s%s%10s { %s, %s }\n", "",
+              "-->", "Account: ", "number=" + defaultAccount.getAccountNumber(),
+              "description=" + defaultAccount.getAccountDescription());
+        }
+        Term defaultTerm = vendor.getDetaultTerm();
+        if (defaultTerm != null) {
+          System.out.printf("    %-6s%s%10s { %s, %s, %s }\n", "",
+              "-->", "Term: ", "id=" + defaultTerm.getTermsId(),
+              "description=" + defaultTerm.getTermsDescripton(),
+              "due days=" + defaultTerm.getTermsDueDays());
+        }
       }
+      System.out.println("--------------------------------------------------------------------------");
       session.getTransaction().commit();
     } finally {
       if (session.getTransaction().isActive()) {
