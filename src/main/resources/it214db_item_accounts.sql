@@ -1,0 +1,59 @@
+-- MySQL dump 10.13  Distrib 8.0.36, for macos14 (arm64)
+--
+-- Host: 127.0.0.1    Database: it214db
+-- ------------------------------------------------------
+-- Server version	8.0.33
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `item_accounts`
+--
+
+DROP TABLE IF EXISTS `item_accounts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `item_accounts` (
+  `item_id` int NOT NULL AUTO_INCREMENT,
+  `item_amount` double NOT NULL,
+  `item_date` datetime NOT NULL,
+  `item_type` varchar(4) NOT NULL,
+  `branch_id` int DEFAULT NULL,
+  `account_no` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`item_id`),
+  KEY `FKjsk1mvyxqa8qnnc2rvbwgemij` (`branch_id`),
+  KEY `FK8xelxrunw52rhlwn2pa3t2ew6` (`account_no`),
+  CONSTRAINT `FK8xelxrunw52rhlwn2pa3t2ew6` FOREIGN KEY (`account_no`) REFERENCES `accounts` (`account_no`),
+  CONSTRAINT `FKjsk1mvyxqa8qnnc2rvbwgemij` FOREIGN KEY (`branch_id`) REFERENCES `branches` (`branch_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `item_accounts`
+--
+
+LOCK TABLES `item_accounts` WRITE;
+/*!40000 ALTER TABLE `item_accounts` DISABLE KEYS */;
+INSERT INTO `item_accounts` (`item_id`, `item_amount`, `item_date`, `item_type`, `branch_id`, `account_no`) VALUES (1,1000,'2560-03-15 10:23:45','CDP',2,'6520000001'),(2,15000,'2560-05-06 14:55:23','QDP',2,'6520000001'),(3,-3000,'2560-08-31 13:30:00','CWD',1,'6520000001'),(4,46.25,'2560-12-31 00:12:25','INT',2,'6520000001'),(5,-7000,'2561-06-08 09:45:17','XWD',3,'6520000001'),(6,-3000,'2561-06-08 16:40:00','XWD',2,'6520000001'),(7,5000,'2561-06-21 00:04:30','CDP',2,'6520000001'),(8,2000,'2560-04-15 09:12:44','CDP',1,'6520000002'),(9,-500,'2560-07-30 15:42:22','CWD',3,'6520000002'),(10,6.42,'2560-12-31 00:12:27','INT',1,'6520000002'),(11,5400,'2561-02-15 09:12:44','CDP',1,'6520000002'),(12,7000,'2561-06-08 09:45:13','XDP',3,'6520000002'),(13,1500,'2561-04-25 14:50:34','CDP',1,'6520000003'),(14,3200,'2561-05-01 11:21:44','CDP',1,'6520000003'),(15,-900,'2561-06-25 14:50:34','CWD',2,'6520000003'),(16,1000,'2561-04-30 15:12:21','CDP',3,'6340000001'),(17,1000,'2561-05-31 00:50:34','CDP',3,'6340000001'),(18,1000,'2561-06-30 00:50:34','CDP',3,'6340000001'),(19,52000,'2561-06-28 09:30:25','CDP',3,'6340000002'),(20,15000,'2561-06-30 13:25:10','CDP',1,'6340000002'),(21,-4500,'2561-07-15 00:00:00','CWD',1,'6340000002'),(22,-6000,'2561-07-15 14:25:00','CWD',1,'6340000002');
+/*!40000 ALTER TABLE `item_accounts` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2024-02-21  0:07:10

@@ -20,4 +20,16 @@ public class DateUtils {
     return date;
   }
 
+  public static Date StringToDate(String dateString, String pattern) {
+    DateFormat dateFormat = new SimpleDateFormat(pattern);
+    Date date = null;
+    try {
+      // Parse the string to a Date object
+      date = dateFormat.parse(dateString);
+    } catch (ParseException e) {
+      e.printStackTrace();
+    }
+    return date;
+  }
+
 }
