@@ -7,7 +7,8 @@ import java.util.Date;
 
 public class DateUtils {
 
-  private static DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+  private static String pattern = "dd-MM-yyyy";
+  private static DateFormat dateFormat = new SimpleDateFormat(pattern);
 
   public static Date StringToDate(String dateString) {
     Date date = null;
@@ -30,6 +31,17 @@ public class DateUtils {
       e.printStackTrace();
     }
     return date;
+  }
+
+  public static String DateToString(Date date) {
+    String dateStr = "";
+    try {
+      // Format the Date object to a string
+      dateStr = dateFormat.format(date);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return dateStr;
   }
 
 }

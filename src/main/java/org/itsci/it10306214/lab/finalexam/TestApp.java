@@ -135,6 +135,7 @@ public class TestApp {
 
     public static void main(String[] args) {
         // populateData();
+        ;
 
         SessionFactory sessionFactory = HibernateConnection.getSessionFactory();
         Session session = sessionFactory.openSession();
