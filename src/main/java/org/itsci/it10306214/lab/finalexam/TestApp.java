@@ -135,37 +135,19 @@ public class TestApp {
 
     public static void main(String[] args) {
         // populateData();
-        ;
 
-        SessionFactory sessionFactory = HibernateConnection.getSessionFactory();
-        Session session = sessionFactory.openSession();
+        OrderCtl orderCtl = new OrderCtl();
 
-        try {
-            session.beginTransaction();
-            String hql = "FROM Order";
-            List<Order> orders = session.createQuery(hql, Order.class).getResultList();
-            System.out.println("                       --- List of Orders ---");
-            System.out.println("--------------------------------------------------------------------------");
-            System.out.printf("%-10s| %-10s| %-12s| %-32s| %s\n", "Order ID", "Order Date", "Status", "Customer Name",
-                    "Customer Address");
-            System.out.println("--------------------------------------------------------------------------");
-            for (Order order : orders) {
-                Integer orderId = order.getId();
-                Date orderDate = order.getOrderDate();
-                String status = order.getStatus();
-                String customerName = order.getCustomer().getName();
-                String customerAddress = order.getCustomer().getAddress();
-                System.out.printf("    %-6d| %-10s| %-12s| %-31s | %s\n", orderId, orderDate, status, customerName,
-                        customerAddress);
-            }
-            System.out.println("--------------------------------------------------------------------------");
+        List<Order> orders = orderCtl.findOrderByStatus("Processing");
+        System.out.println(orders.size() + " processing orders found");
+        for (Order order : orders) {
+            System.out.printf("OrderID: #%d, Customer: %s\n", order.getId(), order.getCustomer().getName());
+        }
 
-            session.getTransaction().commit();
-        } finally {
-            if (session.getTransaction().isActive()) {
-                session.getTransaction().rollback();
-            }
-            session.close();
+        orders = orderCtl.findOrderByCustomerName("Sarah Johnson");
+        System.out.println(orders.size() + " orders found for Sarah Johnson");
+        for (Order order : orders) {
+            System.out.printf("OrderID: #%d, Status: %s\n", order.getId(), order.getStatus());
         }
     }
 }
