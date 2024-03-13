@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.itsci.it10306214.lesson10.lab.HibernateConnection;
 import org.itsci.it10306214.lesson10.lab.models.Customer;
 
@@ -115,8 +116,9 @@ public class CustomerCtl {
 
         try {
             session.beginTransaction();
-            customer = (Customer) session.createQuery("FROM Customer WHERE name = :name")
-                    .setParameter("name", name).uniqueResult();
+            Query<Customer> query = session.createQuery("FROM Customer WHERE name = :name", Customer.class);
+            query.setParameter("name", name);
+            customer = query.uniqueResult();
             session.getTransaction().commit();
         } finally {
             if (session.getTransaction().isActive()) {
@@ -134,8 +136,9 @@ public class CustomerCtl {
 
         try {
             session.beginTransaction();
-            customer = (Customer) session.createQuery("FROM Customer WHERE email = :email")
-                    .setParameter("email", email).uniqueResult();
+            Query<Customer> query = session.createQuery("FROM Customer WHERE email = :email", Customer.class);
+            query.setParameter("email", email);
+            customer = query.uniqueResult();
             session.getTransaction().commit();
         } finally {
             if (session.getTransaction().isActive()) {
@@ -153,8 +156,9 @@ public class CustomerCtl {
 
         try {
             session.beginTransaction();
-            customer = (Customer) session.createQuery("FROM Customer WHERE tel = :tel")
-                    .setParameter("tel", tel).uniqueResult();
+            Query<Customer> query = session.createQuery("FROM Customer WHERE tel = :tel", Customer.class);
+            query.setParameter("tel", tel);
+            customer = query.uniqueResult();
             session.getTransaction().commit();
         } finally {
             if (session.getTransaction().isActive()) {
@@ -172,8 +176,9 @@ public class CustomerCtl {
 
         try {
             session.beginTransaction();
-            customer = (Customer) session.createQuery("FROM Customer WHERE memberID = :memberID")
-                    .setParameter("memberID", memberID).uniqueResult();
+            Query<Customer> query = session.createQuery("FROM Customer WHERE memberID = :memberID", Customer.class);
+            query.setParameter("memberID", memberID);
+            customer = query.uniqueResult();
             session.getTransaction().commit();
         } finally {
             if (session.getTransaction().isActive()) {
@@ -191,7 +196,8 @@ public class CustomerCtl {
 
         try {
             session.beginTransaction();
-            customers = session.createQuery("FROM Customer", Customer.class).list();
+            Query<Customer> query = session.createQuery("FROM Customer", Customer.class);
+            customers = query.getResultList();
             session.getTransaction().commit();
         } finally {
             if (session.getTransaction().isActive()) {
@@ -209,8 +215,9 @@ public class CustomerCtl {
 
         try {
             session.beginTransaction();
-            customers = session.createQuery("FROM Customer WHERE name LIKE :name", Customer.class)
-                    .setParameter("name", "%" + name + "%").list();
+            Query<Customer> query = session.createQuery("FROM Customer WHERE name LIKE :name", Customer.class);
+            query.setParameter("name", "%" + name + "%");
+            customers = query.getResultList();
             session.getTransaction().commit();
         } finally {
             if (session.getTransaction().isActive()) {

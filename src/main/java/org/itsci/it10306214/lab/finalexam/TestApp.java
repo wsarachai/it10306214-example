@@ -133,7 +133,7 @@ public class TestApp {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
         // populateData();
 
         OrderCtl orderCtl = new OrderCtl();
@@ -148,6 +148,21 @@ public class TestApp {
         System.out.println(orders.size() + " orders found for Sarah Johnson");
         for (Order order : orders) {
             System.out.printf("OrderID: #%d, Status: %s\n", order.getId(), order.getStatus());
+        }
+    }
+
+    public static void main(String[] args) {
+        OrderCtl orderCtl = new OrderCtl();
+
+        Order order = orderCtl.findOrderById(1);
+        System.out.printf("OrderID: #%d\n", order.getId());
+        System.out.printf("Order Date: %s\n", order.getOrderDate());
+        System.out.printf("Status: %s\n", order.getStatus());
+        System.out.printf("Customer: %s\n", order.getCustomer().getName());
+        System.out.println("Order Details:");
+        for (OrderDetail orderDetail : order.getOrderDetails()) {
+            System.out.printf("Product: %s, Quantity: %d\n", orderDetail.getProduct().getName(),
+                    orderDetail.getQuantity());
         }
     }
 }

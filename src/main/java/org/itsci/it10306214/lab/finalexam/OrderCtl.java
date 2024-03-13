@@ -41,4 +41,22 @@ public class OrderCtl {
     }
     return orders;
   }
+
+  public Order findOrderById(int i) {
+    Order order = null;
+    SessionFactory sessionFactory = HibernateConnection.getSessionFactory();
+    Session session = sessionFactory.openSession();
+
+    try {
+      session.beginTransaction();
+      order = session.get(Order.class, i);
+      session.getTransaction().commit();
+    } finally {
+      if (session.getTransaction().isActive()) {
+        session.getTransaction().rollback();
+      }
+      session.close();
+    }
+    return order;
+  }
 }

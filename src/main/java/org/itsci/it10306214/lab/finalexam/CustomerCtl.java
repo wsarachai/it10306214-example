@@ -31,6 +31,7 @@ public class CustomerCtl {
     try {
       session.beginTransaction();
       customer = session.get(Customer.class, id);
+      session.getTransaction().commit();
     } finally {
       if (session.getTransaction().isActive()) {
         session.getTransaction().rollback();
