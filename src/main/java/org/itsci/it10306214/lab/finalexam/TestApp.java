@@ -5,11 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.itsci.it10306214.lesson08.ex03.ProductDetail;
 
 public class TestApp {
 
@@ -108,46 +103,20 @@ public class TestApp {
         orderDetails.add(new OrderDetail(prod1, 1, ord12));
         orderDetails.add(new OrderDetail(prod2, 4, ord12));
 
-        SessionFactory sessionFactory = HibernateConnection.getSessionFactory();
-        Session session = sessionFactory.openSession();
-
-        try {
-            session.beginTransaction();
-
-            for (Customer customer : customers) {
-                session.saveOrUpdate(customer);
-            }
-
-            for (Product product : products) {
-                session.saveOrUpdate(product);
-            }
-
-            for (Order order : orders) {
-                session.saveOrUpdate(order);
-            }
-
-            session.getTransaction().commit();
-        } finally {
-            if (session.getTransaction().isActive()) {
-                session.getTransaction().rollback();
-            }
-            session.close();
-        }
-    }
-
-    public static void test() {
+        CustomerCtl customerCtl = new CustomerCtl();
+        ProductCtl productCtl = new ProductCtl();
         OrderCtl orderCtl = new OrderCtl();
 
-        List<Order> orders = orderCtl.findOrderByStatus("Processing");
-        System.out.println(orders.size() + " processing orders found");
-        for (Order order : orders) {
-            System.out.printf("OrderID: #%d, Customer: %s\n", order.getId(), order.getCustomer().getName());
+        for (Customer customer : customers) {
+            customerCtl.saveCustomer(customer);
         }
 
-        orders = orderCtl.findOrderByCustomerName("Sarah Johnson");
-        System.out.println(orders.size() + " orders found for Sarah Johnson");
+        for (Product product : products) {
+            productCtl.saveProduct(product);
+        }
+
         for (Order order : orders) {
-            System.out.printf("OrderID: #%d, Status: %s\n", order.getId(), order.getStatus());
+            orderCtl.saveOrder(order);
         }
     }
 
@@ -222,7 +191,7 @@ public class TestApp {
         String printFormat = "%s | %s | %s | %s | %s |\n";
 
         System.out.println();
-        System.out.println("Order Details:");
+        // System.out.println("Order Details:");
         printHorizontalLine(width, "-");
         System.out.printf(printFormat,
                 getStringPos(productIDWidth, "Product ID", PrintAlignment.CENTER),
@@ -254,9 +223,25 @@ public class TestApp {
         printOrderDetails(order);
     }
 
+    public static void test() {
+        OrderCtl orderCtl = new OrderCtl();
+
+        List<Order> orders = orderCtl.findOrderByStatus("Processing");
+        System.out.println(orders.size() + " processing orders found");
+        for (Order order : orders) {
+            System.out.printf("OrderID: #%d, Customer: %s\n", order.getId(), order.getCustomer().getName());
+        }
+
+        orders = orderCtl.findOrderByCustomerName("Sarah Johnson");
+        System.out.println(orders.size() + " orders found for Sarah Johnson");
+        for (Order order : orders) {
+            System.out.printf("OrderID: #%d, Status: %s\n", order.getId(), order.getStatus());
+        }
+    }
+
     public static void main(String[] args) {
         // populateData();
         test();
-        // showOrder(1);
+        showOrder(3);
     }
 }
