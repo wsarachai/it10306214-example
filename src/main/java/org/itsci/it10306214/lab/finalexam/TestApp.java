@@ -5,9 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.itsci.it10306214.lesson08.ex03.ProductDetail;
 
 public class TestApp {
 
@@ -133,9 +135,7 @@ public class TestApp {
         }
     }
 
-    public static void main1(String[] args) {
-        // populateData();
-
+    public static void test() {
         OrderCtl orderCtl = new OrderCtl();
 
         List<Order> orders = orderCtl.findOrderByStatus("Processing");
@@ -151,18 +151,112 @@ public class TestApp {
         }
     }
 
-    public static void main(String[] args) {
+    private static int width = 81;
+
+    private static enum PrintAlignment {
+        LEFT, CENTER, RIGHT
+    }
+
+    private static String repeatChar(int repeat, String character) {
+        if (repeat <= 0) {
+            return "";
+        } else {
+            return String.format("%0" + repeat + "d", 0).replace("0", character);
+        }
+    }
+
+    private static void printHorizontalLine(int repeat, String character) {
+        System.out.println(repeatChar(repeat, character));
+    }
+
+    private static String getLeftAlignment(int width, String text) {
+        return text + repeatChar(width - text.length(), " ");
+    }
+
+    private static String getCenterAlignment(int width, String text) {
+        String result = "";
+        int margin = ((width - text.length()) / 2);
+        if (margin <= 0) {
+            result = text;
+        } else {
+            int remaining = width - (margin + text.length());
+            result = repeatChar(margin, " ") + text + repeatChar(remaining, " ");
+        }
+        return result;
+    }
+
+    private static String getRightAlignment(int width, String text) {
+        return repeatChar(width - text.length(), " ") + text;
+    }
+
+    private static String getStringPos(int width, String text) {
+        return getStringPos(width, text, PrintAlignment.CENTER);
+    }
+
+    private static String getStringPos(int width, String text, PrintAlignment alignment) {
+        String result = "";
+        switch (alignment) {
+            case LEFT:
+                result = getLeftAlignment(width, text);
+                break;
+            case CENTER:
+                result = getCenterAlignment(width, text);
+                break;
+            case RIGHT:
+                result = getRightAlignment(width, text);
+                break;
+            default:
+                result = getLeftAlignment(width, text);
+                break;
+        }
+        return result;
+    }
+
+    private static void printOrderDetails(Order order) {
+        int productIDWidth = 12;
+        int productNameWidth = 25;
+        int quantityWidth = 10;
+        int priceWidth = 10;
+        int totalWidth = 10;
+
+        String printFormat = "%s | %s | %s | %s | %s |\n";
+
+        System.out.println();
+        System.out.println("Order Details:");
+        printHorizontalLine(width, "-");
+        System.out.printf(printFormat,
+                getStringPos(productIDWidth, "Product ID", PrintAlignment.CENTER),
+                getStringPos(productNameWidth, "Product Name"), getStringPos(quantityWidth, "Quantity"),
+                getStringPos(priceWidth, "Price"), getStringPos(totalWidth, "Total"));
+
+        printHorizontalLine(width, "-");
+        for (OrderDetail orderDetail : order.getOrderDetails()) {
+            Product product = orderDetail.getProduct();
+            double total = orderDetail.getQuantity() * product.getPrice();
+            System.out.printf(printFormat,
+                    getStringPos(productIDWidth, String.valueOf(product.getId())),
+                    getStringPos(productNameWidth, product.getName(), PrintAlignment.LEFT),
+                    getStringPos(quantityWidth, String.valueOf(orderDetail.getQuantity())),
+                    getStringPos(priceWidth, String.format("%.2f ", product.getPrice()), PrintAlignment.RIGHT),
+                    getStringPos(totalWidth, String.format("%.2f ", total), PrintAlignment.RIGHT));
+        }
+        printHorizontalLine(width, "-");
+    }
+
+    public static void showOrder(int orderId) {
         OrderCtl orderCtl = new OrderCtl();
 
-        Order order = orderCtl.findOrderById(1);
+        Order order = orderCtl.findOrderById(orderId);
         System.out.printf("OrderID: #%d\n", order.getId());
         System.out.printf("Order Date: %s\n", order.getOrderDate());
         System.out.printf("Status: %s\n", order.getStatus());
         System.out.printf("Customer: %s\n", order.getCustomer().getName());
-        System.out.println("Order Details:");
-        for (OrderDetail orderDetail : order.getOrderDetails()) {
-            System.out.printf("Product: %s, Quantity: %d\n", orderDetail.getProduct().getName(),
-                    orderDetail.getQuantity());
-        }
+        printOrderDetails(order);
+    }
+
+    public static void main(String[] args) {
+        // populateData();
+        test();
+        // showOrder(1);
     }
 }
